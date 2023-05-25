@@ -23,15 +23,36 @@ class _LivrosPageState extends State<LivrosPage> {
           'Livros',
           style: GoogleFonts.lato(),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search_rounded),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.filter_alt_outlined),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert_rounded),
+          ),
+        ],
       ),
       body: GridView.builder(
         itemCount: tabela.length,
         itemBuilder: (_, index) {
-          return const GameImageCard();
+          return LivroImageCard(
+            livro: tabela[index],
+          );
         },
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ),
+      ),
+      //Fazer validação para que apenas o Admin tenha acesso ao FAB de Cadastrar um novo Livro
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
       ),
     );
   }

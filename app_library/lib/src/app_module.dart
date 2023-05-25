@@ -1,8 +1,9 @@
-import 'package:app_library/src/home/home_module.dart';
+import 'package:app_library/src/pages/dashboard_module.dart';
+import 'package:app_library/src/pages/livros_page.dart';
 import 'package:app_library/src/shared/stores/app_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'configuration/configuration_page.dart';
+import 'pages/configuration_page.dart';
 
 class AppModule extends Module {
   @override
@@ -13,12 +14,16 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ModuleRoute(
-          '/home',
-          module: HomeModule(),
+          '/dashboard',
+          module: DashBoardModule(),
         ),
         ChildRoute(
           '/config',
           child: (context, args) => const ConfigurationPage(),
+        ),
+        ChildRoute(
+          '/livros',
+          child: (context, args) => const LivrosPage(),
         ),
       ];
 }

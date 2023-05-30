@@ -37,11 +37,11 @@ class _DashBoardPageState extends State<DashBoardPage> {
               padding: const EdgeInsets.only(left: 12),
               child: RawChip(
                 label: Text(
-                  'Usuários',
+                  'Categorias',
                   style: GoogleFonts.lato(),
                 ),
                 onSelected: (value) =>
-                    Navigator.of(context).pushNamed('/usuarios'),
+                    Navigator.of(context).pushNamed('/categorias'),
               ),
             ),
             Padding(

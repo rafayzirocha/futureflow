@@ -43,7 +43,7 @@ class _LivroCardState extends State<LivroCard> {
                 widget.livro.titulo,
                 style: GoogleFonts.lato(
                   fontSize: 16,
-                  color: lightColorScheme.onSurface,
+                  color: lightColorScheme.primary,
                 ),
               ),
             ),

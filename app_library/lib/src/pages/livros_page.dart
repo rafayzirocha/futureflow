@@ -15,6 +15,91 @@ class LivrosPage extends StatefulWidget {
 
 class _LivrosPageState extends State<LivrosPage> {
   final TextEditingController searchController = TextEditingController();
+  List<bool> selectedOptions = [false, false, false];
+
+  void _showBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            void _toggleAll(bool value) {
+              setState(() {
+                selectedOptions =
+                    List.generate(selectedOptions.length, (index) => value);
+              });
+            }
+
+            return Container(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  CheckboxListTile(
+                    title: Text('Gênero Narrativo',
+                        style:
+                            GoogleFonts.lato(color: lightColorScheme.outline)),
+                    value: selectedOptions[0],
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOptions[0] = value!;
+                      });
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text('Gênero Lírico',
+                        style:
+                            GoogleFonts.lato(color: lightColorScheme.outline)),
+                    value: selectedOptions[1],
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOptions[1] = value!;
+                      });
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text('Gênero Dramático',
+                        style:
+                            GoogleFonts.lato(color: lightColorScheme.outline)),
+                    value: selectedOptions[2],
+                    onChanged: (value) {
+                      setState(() {
+                        selectedOptions[2] = value!;
+                      });
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FilledButton.tonal(
+                          onPressed: () {
+                            _toggleAll(false);
+                          },
+                          child: Text('Desmarcar todos',
+                              style: GoogleFonts.lato(
+                                  color: lightColorScheme.primary)),
+                        ),
+                        FilledButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text('Filtrar', style: GoogleFonts.lato()),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +130,9 @@ class _LivrosPageState extends State<LivrosPage> {
               Row(
                 children: [
                   TextButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      _showBottomSheet();
+                    },
                     icon: Icon(
                       Icons.category_rounded,
                       color: lightColorScheme.primary,

@@ -10,7 +10,7 @@ class AppWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Modular.setInitialRoute('/dashboard/');
+    Modular.setInitialRoute('/home/');
     final appStore = context.watch<AppStore>(
       (store) => store.themeMode,
     );

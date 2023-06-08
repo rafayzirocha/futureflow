@@ -106,15 +106,16 @@ class _LivrosPageState extends State<LivrosPage> {
     final tabela = LivroRepository.tabela;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
           child: Column(
             children: [
               SearchBar(
                 elevation: const MaterialStatePropertyAll(0),
                 backgroundColor:
-                    MaterialStatePropertyAll(lightColorScheme.surface),
+                    const MaterialStatePropertyAll(Color(0xFFEFF6FF)),
                 controller: searchController,
                 hintText: 'Pesquise um livro...',
                 textStyle: MaterialStatePropertyAll(
@@ -148,18 +149,13 @@ class _LivrosPageState extends State<LivrosPage> {
                 ],
               ),
               Expanded(
-                child: GridView.builder(
+                child: ListView.builder(
                   itemCount: tabela.length,
                   itemBuilder: (_, index) {
                     return LivroCard(
                       livro: tabela[index],
                     );
                   },
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
-                  ),
                 ),
               ),
             ],

@@ -19,44 +19,21 @@ class _LivroCardState extends State<LivroCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(12),
-        onTap: () {},
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 18),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  widget.livro.foto,
-                  fit: BoxFit.fill,
-                  height: 125,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 18),
-              child: Text(
-                widget.livro.titulo,
-                style: GoogleFonts.lato(
-                  fontSize: 16,
-                  color: lightColorScheme.primary,
-                ),
-              ),
-            ),
-            Text(
-              widget.livro.autor,
-              style: GoogleFonts.lato(
-                fontSize: 14,
-                color: lightColorScheme.outline,
-              ),
-            )
-          ],
+    return ListTile(
+      title: Text(
+        widget.livro.titulo,
+        style: GoogleFonts.lato(
+          color: lightColorScheme.outline,
         ),
       ),
+      subtitle: Text(
+        widget.livro.autor,
+        style: GoogleFonts.lato(
+          color: lightColorScheme.outline,
+        ),
+      ),
+      leading: Image.asset(widget.livro.foto),
+      onTap: () {},
     );
   }
 }

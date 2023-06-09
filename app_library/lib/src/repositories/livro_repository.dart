@@ -46,7 +46,7 @@ class LivroRepository {
     ),
     Livro(
       foto: 'images/amor_na_vitrine.jpg',
-      titulo: 'Amor na vitrine',
+      titulo: 'Amor na Vitrine',
       autor: 'Regina Navarro Lins',
       sinopse:
           'Amor na vitrine percorre a dinâmica dos relacionamentos desde a pré-história, passando pela Grécia Antiga, pela Idade Média, pelo Iluminismo, pelo século XIX, pelo advento da pílula anticoncepcional no século XX, até chegar às novas relações no mundo contemporâneo conectado, no qual as estruturas das relações e os ...',
@@ -67,7 +67,7 @@ class LivroRepository {
     ),
     Livro(
       foto: 'images/a_culpa_e_das_estrelas.jpg',
-      titulo: 'A Culpa É das Estrelas',
+      titulo: 'A Culpa é das Estrelas',
       autor: 'John Green',
       sinopse:
           '"A culpa é das estrelas" narra o romance de dois adolescentes que se conhecem (e se apaixonam) em um Grupo de Apoio para Crianças com Câncer: Hazel, uma jovem de dezesseis anos que sobrevive graças a uma droga revolucionária que detém a metástase em seus pulmões, e Augustus Waters, de dezessete, ex-jogador de basquete ...',

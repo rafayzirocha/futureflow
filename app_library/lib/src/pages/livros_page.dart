@@ -17,90 +17,6 @@ class _LivrosPageState extends State<LivrosPage> {
   final TextEditingController searchController = TextEditingController();
   List<bool> selectedOptions = [false, false, false];
 
-  void _showBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, StateSetter setState) {
-            void _toggleAll(bool value) {
-              setState(() {
-                selectedOptions =
-                    List.generate(selectedOptions.length, (index) => value);
-              });
-            }
-
-            return Container(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  CheckboxListTile(
-                    title: Text('Gênero Narrativo',
-                        style:
-                            GoogleFonts.lato(color: lightColorScheme.outline)),
-                    value: selectedOptions[0],
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOptions[0] = value!;
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Gênero Lírico',
-                        style:
-                            GoogleFonts.lato(color: lightColorScheme.outline)),
-                    value: selectedOptions[1],
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOptions[1] = value!;
-                      });
-                    },
-                  ),
-                  CheckboxListTile(
-                    title: Text('Gênero Dramático',
-                        style:
-                            GoogleFonts.lato(color: lightColorScheme.outline)),
-                    value: selectedOptions[2],
-                    onChanged: (value) {
-                      setState(() {
-                        selectedOptions[2] = value!;
-                      });
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(6, 0, 6, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        FilledButton.tonal(
-                          onPressed: () {
-                            _toggleAll(false);
-                          },
-                          child: Text('Desmarcar todos',
-                              style: GoogleFonts.lato(
-                                  color: lightColorScheme.primary)),
-                        ),
-                        FilledButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text('Filtrar', style: GoogleFonts.lato()),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final tabela = LivroRepository.tabela;
@@ -112,42 +28,53 @@ class _LivrosPageState extends State<LivrosPage> {
           padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
           child: Column(
             children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const CircleAvatar(
+                    backgroundImage: AssetImage('images/perfil.jpg'),
+                  ),
+                  const Padding(padding: EdgeInsets.fromLTRB(0, 0, 12, 0)),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Biblioteca Francisco Bosnyak Filho',
+                        style: GoogleFonts.sora(
+                          fontSize: 16,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'Etec Pedro Ferreira Alves',
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.sora(
+                          fontSize: 14,
+                          color: lightColorScheme.outline,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
               SearchBar(
                 elevation: const MaterialStatePropertyAll(0),
                 backgroundColor:
-                    const MaterialStatePropertyAll(Color(0xFFEFF6FF)),
+                    const MaterialStatePropertyAll(Color(0xFFf5f5f5)),
                 controller: searchController,
                 hintText: 'Pesquise um livro...',
                 textStyle: MaterialStatePropertyAll(
-                    GoogleFonts.lato(color: lightColorScheme.outline)),
+                    GoogleFonts.sora(color: lightColorScheme.outline)),
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(
                     Icons.search,
-                    color: lightColorScheme.primary,
+                    color: lightColorScheme.outline,
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  TextButton.icon(
-                    onPressed: () {
-                      _showBottomSheet();
-                    },
-                    icon: Icon(
-                      Icons.category_rounded,
-                      color: lightColorScheme.primary,
-                    ),
-                    label: Text(
-                      'Categorias',
-                      style: GoogleFonts.lato(
-                        fontSize: 16,
-                        color: lightColorScheme.outline,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+              const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
               Expanded(
                 child: GridView.builder(
                   itemCount: tabela.length,
@@ -158,8 +85,8 @@ class _LivrosPageState extends State<LivrosPage> {
                   },
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10.0,
-                    mainAxisSpacing: 10.0,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 12.0,
                   ),
                 ),
               ),
@@ -170,7 +97,7 @@ class _LivrosPageState extends State<LivrosPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: lightColorScheme.primary,
-        foregroundColor: lightColorScheme.background,
+        foregroundColor: Colors.white,
         child: const Icon(Icons.add),
       ),
     );

@@ -149,13 +149,18 @@ class _LivrosPageState extends State<LivrosPage> {
                 ],
               ),
               Expanded(
-                child: ListView.builder(
+                child: GridView.builder(
                   itemCount: tabela.length,
                   itemBuilder: (_, index) {
                     return LivroCard(
                       livro: tabela[index],
                     );
                   },
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 10.0,
+                  ),
                 ),
               ),
             ],

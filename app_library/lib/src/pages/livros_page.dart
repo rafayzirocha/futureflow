@@ -28,44 +28,22 @@ class _LivrosPageState extends State<LivrosPage> {
           padding: const EdgeInsets.fromLTRB(12, 12, 12, 12),
           child: Column(
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const CircleAvatar(
-                    backgroundImage: AssetImage('images/perfil.jpg'),
-                  ),
-                  const Padding(padding: EdgeInsets.fromLTRB(0, 0, 12, 0)),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Biblioteca Francisco Bosnyak Filho',
-                        style: GoogleFonts.sora(
-                          fontSize: 16,
-                          color: Colors.black,
-                        ),
-                      ),
-                      Text(
-                        'Etec Pedro Ferreira Alves',
-                        textAlign: TextAlign.left,
-                        style: GoogleFonts.sora(
-                          fontSize: 14,
-                          color: lightColorScheme.outline,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const Padding(padding: EdgeInsets.fromLTRB(0, 0, 0, 12)),
               SearchBar(
+                trailing: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: const CircleAvatar(
+                      backgroundImage: AssetImage('images/perfil.jpg'),
+                    ),
+                  )
+                ],
                 elevation: const MaterialStatePropertyAll(0),
                 backgroundColor:
                     const MaterialStatePropertyAll(Color(0xFFf5f5f5)),
                 controller: searchController,
                 hintText: 'Pesquise um livro...',
                 textStyle: MaterialStatePropertyAll(
-                    GoogleFonts.sora(color: lightColorScheme.outline)),
+                    GoogleFonts.lato(color: lightColorScheme.outline)),
                 leading: IconButton(
                   onPressed: () {},
                   icon: Icon(
@@ -96,7 +74,7 @@ class _LivrosPageState extends State<LivrosPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: lightColorScheme.primary,
+        backgroundColor: const Color(0xFF002aff),
         foregroundColor: Colors.white,
         child: const Icon(Icons.add),
       ),

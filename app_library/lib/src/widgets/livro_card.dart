@@ -42,13 +42,13 @@ class _LivroCardState extends State<LivroCard> {
               child: Text(
                 widget.livro.titulo,
                 overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.sora(color: Colors.black, fontSize: 16),
+                style: GoogleFonts.lato(color: Colors.black, fontSize: 16),
               ),
             ),
             Text(
               'Livro por ${widget.livro.autor}',
               overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.sora(color: lightColorScheme.outline),
+              style: GoogleFonts.lato(color: lightColorScheme.outline),
             ),
           ],
         ),

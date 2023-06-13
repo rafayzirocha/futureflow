@@ -11,6 +11,12 @@ class PerfilPage extends StatefulWidget {
 }
 
 class _PerfilPageState extends State<PerfilPage> {
+  bool cliqueMinhaConta = false;
+  bool cliqueSobre = false;
+  bool cliquePerguntas = false;
+  bool cliqueFaleConosco = false;
+  bool cliqueTermosPoliticas = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,17 +41,37 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
-                child: Card(
-                  color: Colors.white,
-                  elevation: 0,
-                  child: GestureDetector(
+                child: InkWell(
+                  onTapDown: (_) {
+                    setState(() {
+                      cliqueMinhaConta = true;
+                    });
+                  },
+                  onTapUp: (_) {
+                    setState(() {
+                      cliqueMinhaConta = false;
+                    });
+                  },
+                  onTapCancel: () {
+                    setState(() {
+                      cliqueMinhaConta = false;
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               FeatherIcons.user,
+                              color: cliqueMinhaConta
+                                  ? lightColorScheme.outline
+                                  : Colors.black,
                               size: 18,
                             ),
                             const SizedBox(width: 8),
@@ -53,12 +79,18 @@ class _PerfilPageState extends State<PerfilPage> {
                               'Minha conta',
                               style: GoogleFonts.lato(
                                 fontSize: 16,
+                                color: cliqueMinhaConta
+                                    ? lightColorScheme.outline
+                                    : Colors.black,
                               ),
                             ),
                           ],
                         ),
-                        const Icon(
+                        Icon(
                           FeatherIcons.chevronRight,
+                          color: cliqueMinhaConta
+                              ? lightColorScheme.outline
+                              : Colors.black,
                           size: 18,
                         ),
                       ],
@@ -68,17 +100,37 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
-                child: Card(
-                  color: Colors.white,
-                  elevation: 0,
-                  child: GestureDetector(
+                child: InkWell(
+                  onTapDown: (_) {
+                    setState(() {
+                      cliqueSobre = true;
+                    });
+                  },
+                  onTapUp: (_) {
+                    setState(() {
+                      cliqueSobre = false;
+                    });
+                  },
+                  onTapCancel: () {
+                    setState(() {
+                      cliqueSobre = false;
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               FeatherIcons.bell,
+                              color: cliqueSobre
+                                  ? lightColorScheme.outline
+                                  : Colors.black,
                               size: 18,
                             ),
                             const SizedBox(width: 8),
@@ -86,12 +138,18 @@ class _PerfilPageState extends State<PerfilPage> {
                               'Sobre as notificações',
                               style: GoogleFonts.lato(
                                 fontSize: 16,
+                                color: cliqueSobre
+                                    ? lightColorScheme.outline
+                                    : Colors.black,
                               ),
                             ),
                           ],
                         ),
-                        const Icon(
+                        Icon(
                           FeatherIcons.chevronRight,
+                          color: cliqueSobre
+                              ? lightColorScheme.outline
+                              : Colors.black,
                           size: 18,
                         ),
                       ],
@@ -114,17 +172,37 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
-                child: Card(
-                  color: Colors.white,
-                  elevation: 0,
-                  child: GestureDetector(
+                child: InkWell(
+                  onTapDown: (_) {
+                    setState(() {
+                      cliquePerguntas = true;
+                    });
+                  },
+                  onTapUp: (_) {
+                    setState(() {
+                      cliquePerguntas = false;
+                    });
+                  },
+                  onTapCancel: () {
+                    setState(() {
+                      cliquePerguntas = false;
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               FeatherIcons.helpCircle,
+                              color: cliquePerguntas
+                                  ? lightColorScheme.outline
+                                  : Colors.black,
                               size: 18,
                             ),
                             const SizedBox(width: 8),
@@ -132,12 +210,18 @@ class _PerfilPageState extends State<PerfilPage> {
                               'Perguntas frequentes',
                               style: GoogleFonts.lato(
                                 fontSize: 16,
+                                color: cliquePerguntas
+                                    ? lightColorScheme.outline
+                                    : Colors.black,
                               ),
                             ),
                           ],
                         ),
-                        const Icon(
+                        Icon(
                           FeatherIcons.chevronRight,
+                          color: cliquePerguntas
+                              ? lightColorScheme.outline
+                              : Colors.black,
                           size: 18,
                         ),
                       ],
@@ -147,17 +231,37 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
-                child: Card(
-                  color: Colors.white,
-                  elevation: 0,
-                  child: GestureDetector(
+                child: InkWell(
+                  onTapDown: (_) {
+                    setState(() {
+                      cliqueFaleConosco = true;
+                    });
+                  },
+                  onTapUp: (_) {
+                    setState(() {
+                      cliqueFaleConosco = false;
+                    });
+                  },
+                  onTapCancel: () {
+                    setState(() {
+                      cliqueFaleConosco = false;
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               FeatherIcons.messageCircle,
+                              color: cliqueFaleConosco
+                                  ? lightColorScheme.outline
+                                  : Colors.black,
                               size: 18,
                             ),
                             const SizedBox(width: 8),
@@ -165,12 +269,18 @@ class _PerfilPageState extends State<PerfilPage> {
                               'Fale conosco',
                               style: GoogleFonts.lato(
                                 fontSize: 16,
+                                color: cliqueFaleConosco
+                                    ? lightColorScheme.outline
+                                    : Colors.black,
                               ),
                             ),
                           ],
                         ),
-                        const Icon(
+                        Icon(
                           FeatherIcons.chevronRight,
+                          color: cliqueFaleConosco
+                              ? lightColorScheme.outline
+                              : Colors.black,
                           size: 18,
                         ),
                       ],
@@ -180,17 +290,37 @@ class _PerfilPageState extends State<PerfilPage> {
               ),
               Padding(
                 padding: const EdgeInsets.all(12),
-                child: Card(
-                  color: Colors.white,
-                  elevation: 0,
-                  child: GestureDetector(
+                child: InkWell(
+                  onTapDown: (_) {
+                    setState(() {
+                      cliqueTermosPoliticas = true;
+                    });
+                  },
+                  onTapUp: (_) {
+                    setState(() {
+                      cliqueTermosPoliticas = false;
+                    });
+                  },
+                  onTapCancel: () {
+                    setState(() {
+                      cliqueTermosPoliticas = false;
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 0,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
                           children: [
-                            const Icon(
+                            Icon(
                               FeatherIcons.book,
+                              color: cliqueTermosPoliticas
+                                  ? lightColorScheme.outline
+                                  : Colors.black,
                               size: 18,
                             ),
                             const SizedBox(width: 8),
@@ -198,12 +328,18 @@ class _PerfilPageState extends State<PerfilPage> {
                               'Termos e políticas',
                               style: GoogleFonts.lato(
                                 fontSize: 16,
+                                color: cliqueTermosPoliticas
+                                    ? lightColorScheme.outline
+                                    : Colors.black,
                               ),
                             ),
                           ],
                         ),
-                        const Icon(
+                        Icon(
                           FeatherIcons.chevronRight,
+                          color: cliqueTermosPoliticas
+                              ? lightColorScheme.outline
+                              : Colors.black,
                           size: 18,
                         ),
                       ],

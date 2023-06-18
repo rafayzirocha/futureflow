@@ -56,16 +56,16 @@ class _LivrosPageState extends State<LivrosPage> {
               Expanded(
                 child: GridView.builder(
                   itemCount: tabela.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 12.0,
+                    mainAxisSpacing: 110.0,
+                  ),
                   itemBuilder: (_, index) {
                     return LivroCard(
                       livro: tabela[index],
                     );
                   },
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisSpacing: 12.0,
-                  ),
                 ),
               ),
             ],

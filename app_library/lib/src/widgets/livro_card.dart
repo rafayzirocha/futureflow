@@ -21,19 +21,24 @@ class _LivroCardState extends State<LivroCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {},
-      child: Card(
-        elevation: 0,
-        color: Colors.white,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Expanded(
+            AspectRatio(
+              aspectRatio: 3 / 4, // Defina a proporção desejada
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(
-                  widget.livro.foto,
+                child: FittedBox(
                   fit: BoxFit.cover,
-                  alignment: Alignment.center,
+                  child: Image.asset(
+                    widget.livro.foto,
+                    alignment: Alignment.center,
+                  ),
                 ),
               ),
             ),

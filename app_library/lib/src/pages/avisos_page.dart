@@ -1,6 +1,7 @@
-import 'package:app_library/src/shared/themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../repositories/avisos_repository.dart';
+import '../widgets/aviso_card.dart';
 
 class AvisosPage extends StatefulWidget {
   const AvisosPage({super.key});
@@ -10,18 +11,20 @@ class AvisosPage extends StatefulWidget {
 }
 
 class _AvisosPageState extends State<AvisosPage> {
+  final tabela = AvisosRepository.tabela;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Center(
-          child: Text(
-            'Sem avisos por aqui!',
-            style: GoogleFonts.lato(
-              color: lightColorScheme.outline,
-            ),
-          ),
+        child: ListView.builder(
+          itemCount: tabela.length,
+          itemBuilder: (_, index) {
+            return AvisoCard(
+              aviso: tabela[index],
+            );
+          },
         ),
       ),
     );

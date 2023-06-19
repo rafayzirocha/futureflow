@@ -24,19 +24,6 @@ class AppBarReturn extends StatelessWidget {
             color: Color(0xFF171923),
           ),
         ),
-        IconButton.filledTonal(
-          style: const ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(
-              Color(0xFFEDF2F6),
-            ),
-          ),
-          onPressed: () {},
-          icon: const Icon(
-            FeatherIcons.check,
-            size: 18,
-            color: Color(0xFF171923),
-          ),
-        ),
       ],
     );
   }

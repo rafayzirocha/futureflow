@@ -20,25 +20,21 @@ class FotoPerfil extends StatelessWidget {
           ),
           Positioned(
             right: -16,
-            bottom: 0,
-            child: SizedBox(
-              height: 46,
-              width: 46,
-              child: IconButton.filledTonal(
-                style: const ButtonStyle(
-                  backgroundColor: MaterialStatePropertyAll(
-                    Color(0xFFEDF2F6),
-                  ),
-                ),
-                onPressed: () {},
-                icon: const Icon(
-                  FeatherIcons.edit2,
-                  size: 18,
-                  color: Color(0xFF171923),
+            bottom: -5,
+            child: IconButton.filledTonal(
+              style: const ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(
+                  Color(0xFFEDF2F6),
                 ),
               ),
+              onPressed: () {},
+              icon: const Icon(
+                FeatherIcons.edit2,
+                size: 18,
+                color: Color(0xFF171923),
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

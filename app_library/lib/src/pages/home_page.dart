@@ -1,5 +1,4 @@
 import 'package:app_library/src/pages/livros_page.dart';
-import 'package:app_library/src/shared/themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -40,39 +39,68 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: Colors.white,
         body: pages[currentIndex],
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-          child: BottomNavigationBar(
-            backgroundColor: Colors.white,
-            unselectedFontSize: 0,
-            selectedFontSize: 0,
-            type: BottomNavigationBarType.fixed,
-            onTap: onTap,
-            currentIndex: currentIndex,
-            selectedItemColor: lightColorScheme.primary,
-            unselectedItemColor: lightColorScheme.outline,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            elevation: 0,
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(FeatherIcons.book),
-                label: '',
+        bottomNavigationBar: NavigationBar(
+          height: 60,
+          backgroundColor: Colors.white,
+          elevation: 0,
+          indicatorColor: const Color(0xFFEDF2F6),
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+          selectedIndex: currentIndex,
+          onDestinationSelected: onTap,
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(
+                FeatherIcons.book,
+                color: Color(0xFF171923),
+                size: 18,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(FeatherIcons.heart),
-                label: '',
+              selectedIcon: Icon(
+                FeatherIcons.book,
+                color: Color(0xFF002AFF),
+                size: 18,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(FeatherIcons.bell),
-                label: '',
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(
+                FeatherIcons.heart,
+                color: Color(0xFF171923),
+                size: 18,
               ),
-              BottomNavigationBarItem(
-                icon: Icon(FeatherIcons.user),
-                label: '',
+              selectedIcon: Icon(
+                FeatherIcons.heart,
+                color: Color(0xFF002AFF),
+                size: 18,
               ),
-            ],
-          ),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(
+                FeatherIcons.bell,
+                color: Color(0xFF171923),
+                size: 18,
+              ),
+              selectedIcon: Icon(
+                FeatherIcons.bell,
+                color: Color(0xFF002AFF),
+                size: 18,
+              ),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(
+                FeatherIcons.user,
+                color: Color(0xFF171923),
+                size: 18,
+              ),
+              selectedIcon: Icon(
+                FeatherIcons.user,
+                color: Color(0xFF002AFF),
+                size: 18,
+              ),
+              label: '',
+            ),
+          ],
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import '../models/livro.dart';
 
 class LivroRepository {
-  static List<Livro> tabela = [
+  static List<Livro> livroTabela = [
     Livro(
       foto: 'images/pequeno_principe.jpg',
       titulo: 'O Pequeno Príncipe',

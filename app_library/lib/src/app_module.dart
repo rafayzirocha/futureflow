@@ -1,5 +1,4 @@
 import 'package:app_library/src/pages/home_module.dart';
-import 'package:app_library/src/pages/livros_page.dart';
 import 'package:app_library/src/shared/stores/app_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -15,9 +14,9 @@ class AppModule extends Module {
           '/home',
           module: HomeModule(),
         ),
-        ChildRoute(
-          '/livros',
-          child: (context, args) => const LivrosPage(),
-        ),
+        //ChildRoute(
+        //  '/livros',
+        //  child: (context, args) => const LivrosPage(),
+        //),
       ];
 }

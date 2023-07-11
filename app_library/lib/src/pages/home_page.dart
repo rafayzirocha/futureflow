@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import 'livros_page.dart';
+import 'usuarios_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List pages = [
     const LivrosPage(),
-    const LivrosPage(),
+    const UsuariosPage(),
     const LivrosPage(),
   ];
 

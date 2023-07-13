@@ -1,8 +1,9 @@
-import 'package:app_library/src/widgets/usuario_list.dart';
+import 'package:app_library/src/widgets/usuario_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../models/usuario.dart';
 import '../repositories/usuario_repository.dart';
 
 class UsuariosPage extends StatefulWidget {
@@ -17,6 +18,9 @@ class _UsuariosPageState extends State<UsuariosPage>
   late TabController _tabController;
   late TextEditingController searchController = TextEditingController();
   final tabela = UsuarioRepository.usuarioTabela;
+  final List<Usuario> usuariosInativos = UsuarioRepository.usuarioTabela
+      .where((usuario) => usuario.status == "Inativo")
+      .toList();
 
   @override
   void initState() {
@@ -39,27 +43,40 @@ class _UsuariosPageState extends State<UsuariosPage>
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-              child: SearchBar(
-                  leading: const Icon(
-                    FeatherIcons.search,
-                    size: 18,
-                    color: Color(0xFF0065FF),
+              child: Container(
+                height: 45,
+                width: double.infinity,
+                decoration: ShapeDecoration(
+                  color: const Color(0xFFEDF2F6),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12))),
-                  elevation: const MaterialStatePropertyAll(0),
-                  backgroundColor: const MaterialStatePropertyAll(
-                    Color(0xFFEDF2F6),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        FeatherIcons.search,
+                        size: 18,
+                        color: Color(0xFF0065FF),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Text(
+                        'Pesquise por título ou autor(a)...',
+                        style: GoogleFonts.lato(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          letterSpacing: 0.25,
+                          color: const Color(0xFF44464F),
+                        ),
+                      )
+                    ],
                   ),
-                  controller: searchController,
-                  hintText: 'Pesquise por título ou autor(a)...',
-                  textStyle: MaterialStatePropertyAll(
-                    GoogleFonts.lato(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: 0.25,
-                    ),
-                  )),
+                ),
+              ),
             ),
             DefaultTabController(
               length: 2,
@@ -106,7 +123,7 @@ class _UsuariosPageState extends State<UsuariosPage>
                       if (tabela[index].status == "Ativo") {
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-                          child: UsuarioList(
+                          child: UsuarioCard(
                             usuario: tabela[index],
                           ),
                         );
@@ -123,12 +140,17 @@ class _UsuariosPageState extends State<UsuariosPage>
                       if (tabela[index].status == "Inativo") {
                         return Padding(
                           padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-                          child: UsuarioList(
+                          child: UsuarioCard(
                             usuario: tabela[index],
                           ),
                         );
                       } else {
-                        return const SizedBox();
+                        return Center(
+                          child: Image.asset(
+                            'images/empty.jpg',
+                            height: 300,
+                          ),
+                        );
                       }
                     },
                   ),

@@ -1,5 +1,5 @@
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import 'livros_page.dart';
@@ -14,9 +14,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List pages = [
-    const LivrosPage(),
     const UsuariosPage(),
-    const LivrosPage(),
+    const UsuariosPage(),
+    const UsuariosPage(),
+    const UsuariosPage(),
   ];
 
   int currentIndex = 0;
@@ -28,68 +29,62 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.light,
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: pages[currentIndex],
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(top: 4),
-          child: NavigationBar(
-            height: 60,
-            backgroundColor: Colors.white,
-            elevation: 0,
-            indicatorColor: const Color(0xFFEDF2F6),
-            labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-            selectedIndex: currentIndex,
-            onDestinationSelected: onTap,
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(
-                  FeatherIcons.barChart,
-                  color: Color(0xFF44464F),
-                  size: 18,
-                ),
-                selectedIcon: Icon(
-                  FeatherIcons.barChart,
-                  color: Color(0xFF0065FF),
-                  size: 18,
-                ),
-                label: '',
-              ),
-              NavigationDestination(
-                icon: Icon(
-                  FeatherIcons.book,
-                  color: Color(0xFF44464F),
-                  size: 18,
-                ),
-                selectedIcon: Icon(
-                  FeatherIcons.book,
-                  color: Color(0xFF0065FF),
-                  size: 18,
-                ),
-                label: '',
-              ),
-              NavigationDestination(
-                icon: Icon(
-                  FeatherIcons.messageCircle,
-                  color: Color(0xFF44464F),
-                  size: 18,
-                ),
-                selectedIcon: Icon(
-                  FeatherIcons.messageCircle,
-                  color: Color(0xFF0065FF),
-                  size: 18,
-                ),
-                label: '',
-              ),
-            ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: pages[currentIndex],
+      extendBody: true,
+      bottomNavigationBar: DotNavigationBar(
+        //dotIndicatorColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x3F000000),
+            blurRadius: 4,
+            offset: Offset(0, 4),
+            spreadRadius: 0,
+          )
+        ],
+        itemPadding: const EdgeInsets.all(13),
+        marginR: const EdgeInsets.symmetric(horizontal: 50, vertical: 0),
+        paddingR: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+        currentIndex: currentIndex,
+        onTap: onTap,
+        enableFloatingNavBar: true,
+        enablePaddingAnimation: true,
+        items: [
+          DotNavigationBarItem(
+            icon: const Icon(
+              FeatherIcons.home,
+              size: 20,
+            ),
+            selectedColor: const Color(0xFF0065FF),
+            unselectedColor: Colors.grey.shade500,
           ),
-        ),
+          DotNavigationBarItem(
+            icon: const Icon(
+              FeatherIcons.book,
+              size: 20,
+            ),
+            selectedColor: const Color(0xFF0065FF),
+            unselectedColor: Colors.grey.shade500,
+          ),
+          DotNavigationBarItem(
+            icon: const Icon(
+              FeatherIcons.user,
+              size: 20,
+            ),
+            selectedColor: const Color(0xFF0065FF),
+            unselectedColor: Colors.grey.shade500,
+          ),
+          DotNavigationBarItem(
+            icon: const Icon(
+              FeatherIcons.messageCircle,
+              size: 20,
+            ),
+            selectedColor: const Color(0xFF0065FF),
+            unselectedColor: Colors.grey.shade500,
+          ),
+        ],
       ),
     );
   }

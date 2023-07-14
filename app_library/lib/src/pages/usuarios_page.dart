@@ -145,12 +145,7 @@ class _UsuariosPageState extends State<UsuariosPage>
                           ),
                         );
                       } else {
-                        return Center(
-                          child: Image.asset(
-                            'images/empty.jpg',
-                            height: 300,
-                          ),
-                        );
+                        return SizedBox();
                       }
                     },
                   ),
@@ -158,15 +153,6 @@ class _UsuariosPageState extends State<UsuariosPage>
               ),
             ),
           ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color(0xFF0065FF),
-        child: const Icon(
-          FeatherIcons.plus,
-          size: 18,
-          color: Colors.white,
         ),
       ),
     );
